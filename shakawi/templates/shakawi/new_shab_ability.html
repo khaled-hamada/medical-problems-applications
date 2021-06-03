@@ -1,0 +1,78 @@
+{% extends './base.html' %}
+{% block content %}
+
+
+    {% include './header.html' with title='شاشة التسجيل كشف القدرة' %}
+    <
+    <div class="daily-div  page  " id="inquire-square">
+
+        <div style="display:block; margin-bottom: 5px;">
+            <h2> إجمالى ما تم تسجيله اليوم
+            <span class="today-date translate"></span> </h2>
+        </div>
+        <hr>
+        <div class="daily-box" style="text-align: center;">
+            <label for=""><h1 >{{sh_72}} شاب</h1></label>
+
+        </div>
+
+
+
+    </div>
+    <div id="post-page" class="page">
+        <div id="post-square">
+            <form id="post-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <div class="ability-div">
+                        <input type="number"  min="1900" size="4" maxlength="4" placeholder="السنة" name="year" class="translate"  required>
+                        <input type="number"  min="1" size="3" maxlength="3" placeholder="المركز" name="markaz"  required>
+                        <input type="number" min="1" size="5" placeholder="المسلسل"  name="mosalsal"   required>
+                        </div>
+                        <div class="ability-div">
+
+                                                  <select name="city" id=""  required>
+                                                      <option>المحافظة</option>
+                                                      <option value="الشرقية" selected>الشرقية</option>
+                                                      <option value="القنال">القنال</option>
+                                                  </select>
+
+                                                  <select name="medical_dec" id=""  required>
+                                                      <option>القرار الطبي</option>
+                                                      {%for med in medicals%}
+                                                          {%if forloop.counter == 1%}
+                                                            <option value="{{med.g_id}}" selected>{{med.note}}</option>
+
+                                                          {%else%}
+                                                            <option value="{{med.g_id}}">{{med.note}}</option>
+                                                          {%endif%}
+                                                      {%endfor%}
+
+                                                  </select>
+
+                                                  <select name="note_type" id="" required>
+                                                      <option>نوع المذكرة</option>
+                                                      {%for note in notes %}
+                                                          {%if forloop.counter == 1%}
+                                                            <option value="{{note.g_id}}" selected>{{note.note}}</option>
+
+                                                          {%else%}
+                                                            <option value="{{note.g_id}}">{{note.note}}</option>
+                                                          {%endif%}
+                                                      {%endfor%}
+                                                    
+                                                  </select>
+                        </div>
+                      <div class="ability-div">
+                        <div class="file-container" >
+                            <input type="file" name='image' required>
+                        </div>
+
+                        <button class="btn" type="submit">حفظ</button>
+                    </div>
+                </form>
+                </div>
+
+        </div>
+
+
+{% endblock %}

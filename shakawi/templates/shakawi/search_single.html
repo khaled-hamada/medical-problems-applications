@@ -1,0 +1,28 @@
+
+
+
+{% extends './base.html' %}
+{% block content %}
+
+
+    {% include './header.html' with title='شاشة الاستعلام' %}
+    <div id="inquire-page" class="page">
+        <div id="inquire-square">
+            <form id="search-report-form" method="post">
+                    {% csrf_token %}
+
+
+                    <div class="  ">
+                      <input type="number"  min = "1900" size="4" maxlength="4" placeholder="السنة" name="year" required>
+                      <input type="number" min="1" size="3" maxlength="3" placeholder="المركز" name="markaz" required>
+                      <input type="number" min="1" size="5" placeholder="المسلسل" name="mosalsal" required>
+                      <button class="btn" type="submit">استعلام</button>
+                    </div>
+
+
+              
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

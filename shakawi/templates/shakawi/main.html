@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+{% block content %}
+
+    {% include './header.html' with title='مكتب الشكاوي الطبية' %}
+    <div id="nav-page" class="page">
+        <div id="nav-square">
+            <div class="login-form-field">
+                <div class="">
+                  <a href="{%url 'shakawi:new_shab_fit' page_id=0 %}" class="btn">صفحة تسجيل اللائق</a>
+                  <a href="{%url 'shakawi:new_shab_fit' page_id=0 %}" class="btn">صفحة تسجيل الغير لائق</a>
+                </div>
+                <br><br>
+                <div class="">
+                  <a href="{%url 'shakawi:new_shab_fit' page_id=0 %}" class="btn">صفحة تسجيل القدرة</a>
+                  <a href="{%url 'shakawi:new_shab_fit' page_id=0 %}" class="btn">صفحة تسجيل ال 10%</a>
+                </div>
+                <br><br>
+                <div class="">
+                  <a href="{%url 'shakawi:search_single'%}"  class="btn">صفحة الاستعلام</a>
+                  <a href="{%url 'shakawi:search_reports'%}"  class="btn">طباعة التقارير</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

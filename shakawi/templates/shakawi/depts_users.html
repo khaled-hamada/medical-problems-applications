@@ -1,0 +1,51 @@
+{% extends './base.html' %}
+{% block content %}
+
+    {% include './header.html' with title='مكتب الشكاوي الطبية' %}
+
+    <div  class="container"  id="reports-page" dir="rtl">
+        <br><br>
+      <div class="" id="post-square">
+        <h1> القرار الطبى</h1>
+        <table >
+        <head>
+          <th> القرار </th>
+          <th> ID </th>
+
+        </head>
+        {%for med in medicals%}
+
+          <tr  >
+
+
+            <td>{{med.note}}</td>
+            <td>{{med.g_id}}</td>
+
+          </tr>
+
+          {%endfor%}
+        </table>
+      </div>
+      <br><br>
+    <div class="" id="post-square">
+      <h1>نوع المذكرة</h1>
+      <table>
+      <head>
+        <th>المذكرة</th>
+        <th> ID </th>
+
+      </head>
+        {%for note in notes%}
+        <tr>
+          <td>{{note.note}}</td>
+          <td>{{note.g_id}}</td>
+        </tr>
+
+        {%endfor %}
+      </table>
+    </div>
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+{% block content %}
+
+    {% include './header.html' with title='مكتب الشكاوي الطبية'%}
+    <div id="login-page" class="page">
+        <div id="login-square">
+            <form action="" method="post">
+                {%csrf_token %}
+                <div class="login-form-field">
+                    <input type="text" name="user_name" id="username" placeholder="اسم المستخدم"  required>
+                </div>
+                <div class="login-form-field">
+                    <input type="password" name="password" id="password" placeholder="كلمة المرور" required>
+                </div>
+                <div class="login-form-field">
+                    <button class="btn btn-login" type="submit">تسجيـــل الدخــــول</button>
+                </div>
+            </form>
+            {% if failed %}
+            <div class="login-form-field error" >
+                <p class"error">خطأ فى كلمة السر او إسم المستخدم</p>
+            </div>
+            {%endif%}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends './base.html' %}
+{% block content %}
+
+
+    {% include './header.html' with title='شاشة الاستعلام' %}
+    {% if error == 1 %}
+    <div id="inquire-2-page" class="page">
+        <div id="inquire-2-square">
+            <h3 style="font-size: 1.5em; color:red;"> هذا الشاب مسجل بالفعل فى قاعدة البيانات بهذه البيانات ولا يمكن تسجله مرتين </h3>
+        </div>
+    </div>
+
+    {% endif %}
+    <div id="inquire-2-page" class="page">
+        <div><a href="{{data.shab_image.url}}" target="_blank"><img src="{{data.shab_image.url}}" alt="لا توجد صورة لهذا الشاب فى قاعدة البيانات "></a></div>
+        <div id="inquire-2-square" dir="ltr">
+
+                    <div class="show-single-items " >
+
+                          <input class="input-show " type="text" size="4" maxlength="4" placeholder="السنة" value="{{data.shab_year}}" readonly>
+                          <input class="input-show " type="text" name="" value="السنة"  readonly  >
+                    </div>
+                    <div class="show-single-items" >
+                        <input type="text" size="3" class="input-show " maxlength="3" placeholder="المركز" value="{{data.shab_markaz}}" readonly>
+                        <input type="text" name="" class="input-show " value="المركز"  readonly >
+                    </div>
+                    <div class="show-single-items" >
+                        <input type="text" size="5" placeholder="المسلسل" value="{{data.shab_mosalsal}}" class="input-show " readonly>
+                        <input type="text" name="" value="المسلسل" class="input-show "  readonly >
+                    </div>
+                    <div class="show-single-items" >
+                          <input type="text" placeholder="الإسم" value="{{data.shab_name}}" class="input-show " readonly>
+                          <input type="text" name="" value="الاسم" class="input-show "  readonly >
+                    </div>
+                    <div class="show-single-items" >
+                        <input type="text" placeholder="المحافظة" value="{{data.shab_city}}" class="input-show " readonly>
+                        <input type="text" name="" value="المحافظة" class="input-show " readonly >
+                    </div>
+                    <div class="show-single-items" >
+                          <input type="text" placeholder="القرار الطبي" value="{{data.medical_dec}}" class="input-show " readonly>
+                          <input type="text" name="" value="القرار الطبى"  class="input-show " readonly >
+                    </div>
+                    <div class="show-single-items" >
+                        <input type="text" placeholder="نوع المذكرة" value="{{data.note_type}}" class="input-show " readonly>
+                        <input type="text" name="" value="نوع المذكرة"  class="input-show " readonly >
+                    </div>
+                    <div class="show-single-items" >
+                        <input type="text" placeholder="رقم الكشف" value="{{data.shab_num}}" class="input-show " readonly>
+                        <input type="text" name="" value="رقم الكشف" class="input-show " readonly >
+                    </div>
+                    <div class="show-single-items" >
+                        <input type="text" placeholder="التاريخ" value="{{data.date_recored}}" class="input-show " readonly>
+                        <input type="text" name="" value="تاريخ تسجيل الشاب" class="input-show "  readonly >
+
+                    </div>
+                    <br>
+
+                    <a href="{%url 'shakawi:search_single'%}"  class="btn">بحث جديد</a>
+
+
+
+        </div>
+    </div>
+
+{% endblock %}

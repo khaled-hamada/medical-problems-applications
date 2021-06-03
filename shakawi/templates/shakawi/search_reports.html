@@ -1,0 +1,32 @@
+{% extends './base.html' %}
+{% block content %}
+
+
+    {% include './header.html' with title='شاشة طباعة التقارير' %}
+    <div id="search-report-page" class="page">
+        <div id="search-report-square">
+            <form id="search-report-form" method="post">
+                {% csrf_token %}
+                    <div>
+                        <input type="date" size="4"  placeholder="التاريخ" name="date_recored" required>
+
+                        <select name="city" id=""  required>
+                            <option>المحافظة</option>
+                            <option value="الشرقية" >الشرقية</option>
+                            <option value="القنال">القنال</option>
+                        </select>
+
+                        <select name="note_type" id="" required>
+                            <option>نوع المذكرة</option>
+                            {%for note in notes %}
+                                <option value="{{note.g_id}}">{{note.note}}</option>
+                            {%endfor%}
+
+                        </select>
+                        <button class="btn" type="submit">البحث عن التقرير</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

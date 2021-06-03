@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static   'shakawi/style.css' %}?ver=1.1">
+    <!-- <link rel="stylesheet" href="{% static 'shakawi/bootstrap-4.3.1-dist/css/bootstrap.min.css' %}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+</head>
+<body>
+  
+    {% block content %}
+    {% endblock %}
+    
+    <script src="{% static   'shakawi/jquery.js' %}"></script>
+
+    <script>
+        $(function(){
+            //to convert arabic numbers to persian numbers
+            var arabicNumbers = ['۰', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+            var convert_to_persian_numbers = function (v) {
+                var chars = v.split('');
+                for (var i = 0; i < chars.length; i++) {
+                    if (/\d/.test(chars[i])) {
+                    chars[i] = arabicNumbers[chars[i]];
+                    }
+                }
+                return chars.join('');
+            }
+
+            //to write down the date
+
+            var today_d = new Date();
+            var d = today_d.getDate();
+            var m = today_d.getMonth()+1;
+            var y = today_d.getFullYear();
+            today = d +" / "+m +" / "+y +" "
+            $('.today-date').text(': ' + convert_to_persian_numbers(today));
+
+
+
+        });
+
+    </script>
+    <!-- <script src="{% static 'shakawi/bootstrap-4.3.1-dist/js/bootstrap.min.js' %}" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+
+</body>
+</html>

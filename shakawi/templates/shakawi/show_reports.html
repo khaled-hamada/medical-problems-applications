@@ -1,0 +1,129 @@
+{% extends './base.html' %}
+{% block content %}
+{%load static %}
+{% include './header.html' with title='شاشة طباعة التقارير' %}
+<style>
+
+    header.reports-essential ,footer.reports-essential {
+            display:none
+        }
+        body {
+            overflow-y: scroll;
+        }
+
+    td {
+        background-color: #fff;
+    }
+    @media print {
+
+
+        #reports-page h2 {
+            margin: 15px 0 25px 0;
+        }
+
+
+        header ,footer,nav {
+            display:none
+        }
+
+        .container {
+            width: auto;
+        }
+        header.reports-essential ,footer.reports-essential {
+            display:flex; /*flex*/
+            background-color: #fff;
+            color: #000;
+            font-size: 15px;
+        }
+        footer.reports-essential {
+            display:flex;
+            background-color: #fff;
+            color: #000;
+            font-size: 21px;
+        }
+
+        header.reports-essential {
+            padding-bottom: 5px;
+        }
+
+        footer.reports-essential {
+            padding-top: 15px;
+            display: none;
+        }
+        header {
+            position: static;
+            width: 100%;
+            top: 0;
+        }
+        footer {
+            position: static;
+            width: 100%;
+            bottom: 0;
+        }
+
+        #reports-page .table {
+            font-size: 15px;
+        }
+
+    }
+</style>
+<header class="reports-essential">
+    <div>
+        <div>منطقة تجنيد و تعبئة الزقازيق</div>
+        <div>فرع الجناح الطبي</div>
+        <div>
+            <span>التاريخ : </span>
+            <span class=" translate">{{search_date}}</span>
+        </div>
+    </div>
+
+    <div id="logo_div">
+        <img src="{%static 'shakawi/background.png' %}" alt="logo" height="70px" width="100px">
+    </div>
+
+</header>
+<div id="reports-page">
+    <div class="container">
+        <div>
+            <h2>كشف تسليم نموذج <span class="translate">{{note_type}}</span>  إلى مراجعة  {{city}}</h2>
+        </div>
+        <div class="table">
+            <div class="table-head">
+                <div>م</div>
+                <div>الرقم الثلاثي</div>
+                <div>الإسم</div>
+                <div>القرار الطبي</div>
+                <div>نوع الأبحاث</div>
+            </div>
+            {% for shab in data %}
+            <div class="table-row-container">
+                <div class="table-row">
+                    <div>{{shab.shab_num}}</div>
+                    <div>{{shab.shab_year}}</div>
+                    <div>{{shab.shab_markaz}}</div>
+                    <div>{{shab.shab_mosalsal}}</div>
+                    <div>{{shab.shab_name}}</div>
+                    <div>{{shab.medical_dec}}</div>
+                    <div>{{shab.rays}} - {{shab.reports}}</div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+</div>
+<footer class="reports-essential">
+    <div>
+        <div><p><h4>                                     / المسلم</h4> </p></div>
+        <div>{{user.first_name}}</div>
+        <div>حكمدار مكتب الشكاوي الطبية</div>
+    </div>
+
+    <div>
+        <div>        /  المستلم</div>
+        <div>          /        </div>
+        <div>مراجعة  / {{city}}</div>
+    </div>
+</footer>
+{% endblock %}

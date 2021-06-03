@@ -1,0 +1,38 @@
+{%load static%}
+<header>
+    <div>
+        <div>هيئة التنظيم و الإدارة</div>
+        <div>إدارة التجنيد و التعبئة</div>
+        <div>منطقة تجنيد و تعبئة الزقازيق</div>
+        <div>
+            <span>التاريخ</span>
+            <span class="today-date translate"></span>
+        </div>
+    </div>
+    <div class="title"><h1>{{ title }}</h1></div>
+    <div id="logo_div">
+        <img src="{%static 'shakawi/background.png' %}" alt="logo" height="125px" width="150px">
+    </div>
+
+</header>
+  {% if  user.is_authenticated and show %}
+<br>
+
+<div class="topnav" >
+    <nav>
+
+      <a href="{%url 'shakawi:new_shab_fit' page_id=0 %}" class="btn">صفحة تسجيل اللائق</a>
+      <a href="{%url 'shakawi:new_shab_unfit' page_id=1 %}" class="btn">صفحة تسجيل الغير لائق</a>
+      <a href="{%url 'shakawi:new_shab_ability' page_id=2 %}" class="btn">صفحة تسجيل القدرة</a>
+      <a href="{%url 'shakawi:new_shab_ten' page_id=3 %}" class="btn">صفحة تسجيل ال 10%</a>
+
+      <a href="{%url 'shakawi:search_reports'%}"  class="btn">طباعة التقارير</a>
+      <a href="{%url 'shakawi:search_single'%}"  class="btn">صفحة الاستعلام</a>
+      <a href="{%url 'shakawi:logout'%}"  class="btn">تسجيل الخروج</a>
+
+
+    </nav>
+    
+</div>
+
+  {% endif %}
